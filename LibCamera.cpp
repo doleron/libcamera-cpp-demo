@@ -174,6 +174,7 @@ void LibCamera::requestComplete(Request *request) {
 }
 
 void LibCamera::processRequest(Request *request) {
+    std::lock_guard<std::mutex> lock(free_requests_mutex_);
     requestQueue.push(request);
 }
 
